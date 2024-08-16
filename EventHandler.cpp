@@ -2,7 +2,7 @@
 #include "EventHandler.h"
 #include <SDL2/SDL.h>
 #include <iostream>
-#include <Box2D/Box2D.h>
+#include <box2d/box2d.h>
 
 #include "Room.h"
 #include "Ship.h"
