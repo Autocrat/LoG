@@ -1,4 +1,4 @@
-TARGET=grid.exe
+TARGET=grid
 
 SRCS=\
 main.cpp \
@@ -30,7 +30,7 @@ LIBRARIES=\
 -lSDL2 \
 -lSDL2_image \
 -lGL \
--lBox2D \
+-lbox2d \
 -ltinyxml2 \
 
 

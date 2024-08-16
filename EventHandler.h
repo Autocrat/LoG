@@ -13,7 +13,7 @@ private:
   bool m_bQuit;
   SDL_Window* m_pWindow;
 
-  //Box2D  stuff
+  //box2d  stuff
   b2World& m_physicsWorld;
   float m_timeStep;
   int m_velocityIterations;

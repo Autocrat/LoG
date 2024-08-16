@@ -24,7 +24,7 @@ Ship::Ship(b2World& world,const glm::mat4& projMat):
     float startX = 0.0f;
     float startY = 0.0f;
 
-    //Set up the object for Box2D
+    //Set up the object for box2d
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(startX,startY); //trying to start at the center

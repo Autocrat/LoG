@@ -6,7 +6,7 @@
 #include "EventHandler.h"
 
 //Box 2D
-#include <Box2D/Box2D.h>
+#include <box2d/box2d.h>
 
 //function prototype
 //1920x1080 for full HD
@@ -17,7 +17,7 @@ void setupDisplay(SDL_Window *&pWindow, SDL_GLContext& context, int screenx=1024
 int main(int /*argc*/, char ** /*argv*/)
 {
 
-    //World for use with Box2D with no gravity
+    //World for use with box2d with no gravity
     //positive 10.0 is up
     //negative 10.0 is down
     //positive is right,

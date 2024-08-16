@@ -29,6 +29,7 @@ Room::Room(b2World& physicsWorld,
 	return;
     }
 
+    //Currently, the image size should be 192x108x24bpp (1/10 of a 1920x1080 image)
     SDL_LockSurface(map_image_surface);
     std::cout << (int)map_image_surface->format->BitsPerPixel << "   " << (int)map_image_surface->format->BytesPerPixel  << std::endl;
     std::cout << "Format enum: " <<  SDL_GetPixelFormatName(map_image_surface->format->format) << std::endl;

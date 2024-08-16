@@ -1,7 +1,7 @@
 #include "Portal.h"
 #include <iostream>
 #include <glm/gtc/type_ptr.hpp>
-#include <Box2D/Box2D.h>
+#include <box2d/box2d.h>
 #include "Shaders.h"
 #include "NodeData.h"
 

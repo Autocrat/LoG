@@ -1,7 +1,7 @@
 #include "Block.h"
 #include <iostream>
 #include <glm/gtc/type_ptr.hpp>
-#include <Box2D/Box2D.h>
+#include <box2d/box2d.h>
 
 #include "Shaders.h"
 #include "NodeData.h"
@@ -145,7 +145,7 @@ void Block::SetupGraphics()
 
 void Block::SetupPhysics()
 {
-      //Set up the object for Box2D
+      //Set up the object for box2d
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
     //    bodyDef.position.Set(startX,startY); //trying to start at the center

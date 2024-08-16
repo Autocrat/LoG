@@ -2,7 +2,7 @@
 #define SHIP_H
 
 #include "GLHeader.h"
-#include <Box2D/Box2D.h>
+#include <box2d/box2d.h>
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 #include <vector>
 
@@ -49,7 +49,7 @@ private:
     GLuint m_numIndices;
     GLfloat m_angle;
 
-    //Box2D parameters
+    //box2d parameters
 
     //reference to the world to use for Box
     b2World& m_worldRef;
