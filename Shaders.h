@@ -13,6 +13,16 @@ class Shaders
 
   GLuint getShader(const std::string& shaderName) const;
  private:
+  bool compileShader(const char* vertexShaderSource,
+                     const char* fragmentShaderSource,
+                     const char* shaderName);
+  
+  void BlockShader();
+  void PortalShader();
+
+
+  
+
   std::map<std::string, GLuint> m_shaderPrograms;
 };
 

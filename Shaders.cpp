@@ -1,8 +1,15 @@
 #include "Shaders.h"
 #include <iostream>
 
-
 Shaders::Shaders()
+{
+  BlockShader();
+  PortalShader();
+}
+
+
+
+void Shaders::BlockShader()
 {
     const char *vertexShaderSource =  // "#version 330 core\n"
       "attribute vec3 aPos;\n"
@@ -22,11 +29,36 @@ Shaders::Shaders()
       "   gl_FragColor = vec4(vColor, 1.0);\n"
       "}\n\0";
   
-    /********************************************************/
-    //temp setup shader info
-    // build and compile our shader program
-    // ------------------------------------
-    // vertex shader
+
+    compileShader(vertexShaderSource, fragmentShaderSource,"basic");
+}
+
+
+void Shaders::PortalShader()
+{
+  const char *vertexShaderSource = // "#version 330 core\n"
+      "attribute vec3 aPos;\n"
+      "uniform mat4 mvp;\n"
+      "void main()\n"
+      "{\n"
+      "   gl_Position = mvp * vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"   
+      "}\0";
+
+  const char *fragmentShaderSource = // "#version 330 core\n"
+    "void main()\n"
+    "{\n"
+    "   gl_FragColor = vec4(1.0f, 0.5f, 1.0f, 1.0f);\n"
+    "}\n\0";
+
+    compileShader(vertexShaderSource, fragmentShaderSource,"portal");
+
+}
+
+
+bool Shaders::compileShader(const char* vertexShaderSource,
+                     const char* fragmentShaderSource,
+                     const char* shaderName)
+{
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
     glCompileShader(vertexShader);
@@ -39,7 +71,8 @@ Shaders::Shaders()
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
-// fragment shader
+
+    // fragment shader
     int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
@@ -63,12 +96,16 @@ Shaders::Shaders()
         std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
     }
 
-    m_shaderPrograms["basic"] = shaderProgram;
+    m_shaderPrograms[shaderName] = shaderProgram;
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
+  return success;
 }
+
+
+
 
 Shaders::~Shaders()
 {
