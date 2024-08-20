@@ -23,6 +23,9 @@ Block::Block(b2World& physicsWorld,
   m_stopX(rightX),
   m_stopY(botY),
   m_pBody(0),
+  m_red(nodeInfo.m_red/255.0),
+  m_blue(nodeInfo.m_blue/255.0),
+  m_green(nodeInfo.m_green/255.0),
   m_index(blockIndex)
 {
   SetupShader();
@@ -44,6 +47,8 @@ void Block::Draw()
 			0                  // offset of first element
 			);
 
+
+  glUniform3f(m_color, m_red, m_blue, m_green);
   //pass the transform matrix into the shader
   glUniformMatrix4fv(m_mvp, 1, GL_FALSE, glm::value_ptr(m_projection));
   
@@ -69,7 +74,12 @@ void Block::SetupShader()
       std::cerr << "Could not find attribute " << "aPos" << std::endl;
       return;
     }
-    
+
+    m_color = glGetUniformLocation(m_shaderProgram,"uColor");
+    if (m_color == -1) {
+      std::cerr << "Could not find uniform " << "uColor" << std::endl;
+      return;
+    }    
         
     m_mvp = glGetUniformLocation(m_shaderProgram, "mvp");
     if (m_mvp == -1) {

@@ -6,10 +6,10 @@
 struct NodeInfo
 {
     NodeInfo():
-	m_red(0),
-	m_green(0),
-	m_blue(0),
-	m_linkNodeId(0)
+	    m_red(0),
+	    m_green(0),
+	    m_blue(0),
+	    m_linkNodeId(0)
     {
     }
     

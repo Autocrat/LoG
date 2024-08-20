@@ -77,48 +77,47 @@ Room::Room(b2World& physicsWorld,
     int pitch = map_image_surface->pitch;
     int pixelNum = 0;
     for(int j = 0; j < map_image_surface->h; ++j)
-    {
-	int offset = j * pitch; //offset into the byte array of pixels
-	lastIndex = (pixels[offset+2] << 16) | (pixels[offset+1] << 8) | (pixels[offset+0]);
-	pixelRunCount = 0;
-	xStart = 0;
-
-	for(int i = 0; i < pitch;)
 	{
-	    unsigned char b = pixels[offset + i++];
-	    unsigned char g = pixels[offset + i++];
-	    unsigned char r = pixels[offset + i++];
-	    ++pixelNum;
-	    unsigned int blockIndex = (r << 16) | (g << 8) | (b);
-	    //Check to see if it's still the same texture
-	    if(blockIndex!=lastIndex || pixelNum == map_image_surface->w) //we've reached the end.  create the block object that fits this count.
-	    {
-		int xEnd = xStart + pixelRunCount;
-		//Block creation
-		HandleBlockCreation(xStart,xEnd,lastIndex,j);
-   
-		//reset
-		if(pixelNum == map_image_surface->w) //reset when we reach the end of the row
-		{
-		    xStart = 0;
-		    pixelNum = 0;
-		}
-		else //reset at the end of the run
-		{
-		    xStart += pixelRunCount;
-		    lastIndex = blockIndex;
-		}
-		pixelRunCount = 1;
-	      
-	    } // last in run or row
-	    else
-	    {
-		++pixelRunCount;
-	    }
+		int offset = j * pitch; // offset into the byte array of pixels
+		lastIndex = (pixels[offset + 2] << 16) | (pixels[offset + 1] << 8) | (pixels[offset + 0]);
+		pixelRunCount = 0;
+		xStart = 0;
 
+		for (int i = 0; i < pitch;)
+		{
+			unsigned char b = pixels[offset + i++];
+			unsigned char g = pixels[offset + i++];
+			unsigned char r = pixels[offset + i++];
+			++pixelNum;
+			unsigned int blockIndex = (r << 16) | (g << 8) | (b);
+			// Check to see if it's still the same texture
+			if (blockIndex != lastIndex || pixelNum == map_image_surface->w) // we've reached the end.  create the block object that fits this count.
+			{
+				int xEnd = xStart + pixelRunCount;
+				// Block creation
+				HandleBlockCreation(xStart, xEnd, lastIndex, j);
+
+				// reset
+				if (pixelNum == map_image_surface->w) // reset when we reach the end of the row
+				{
+					xStart = 0;
+					pixelNum = 0;
+				}
+				else // reset at the end of the run
+				{
+					xStart += pixelRunCount;
+					lastIndex = blockIndex;
+				}
+				pixelRunCount = 1;
+
+			} // last in run or row
+			else
+			{
+				++pixelRunCount;
+			}
+		}
 	}
-    }
-    SDL_UnlockSurface(map_image_surface);    
+	SDL_UnlockSurface(map_image_surface);    
     SDL_FreeSurface(map_image_surface);
 
     BlockMap::iterator iter = m_blockMap.begin();

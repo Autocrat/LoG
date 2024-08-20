@@ -1,10 +1,12 @@
 <GeneralData>
   <Node>
+   <!-- Right now 8/16/2025, NodeId is used as the index in the block creation.  This means that the
+   field is directly tied to the color read from the bmp.  This one is equal to 0xFF0000-->
     <NodeId>16711680</NodeId>
     <Color>
       <Red>0</Red>
       <Green>255</Green>
-      <Blue>0</Blue>
+      <Blue>255</Blue>
     </Color>
   </Node>
   <Node>

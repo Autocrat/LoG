@@ -1,0 +1,9 @@
+In no particular order, the list of things I would like to accomplish in this project
+1. 8/20/24 Done for basic block - Let the XML specify the colors of the block
+2. Portals/teleporters/whatever
+3. Enemies (this needs to be broken down into sub goals)
+4. Shooting/weapons (again, probably needs to be broken down)
+5. Connected rooms (get from 1 place to another)
+6. Player graphics/physics (shape, etc)
+7. Items (if they're even necessary)
+8. 

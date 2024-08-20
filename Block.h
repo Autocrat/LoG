@@ -48,11 +48,15 @@ private:
 
   GLuint m_VBO;
   GLuint m_EBO;
-
+  
   GLuint m_aPos;
   GLuint m_mvp;
 
+  GLuint m_color;
   b2Body* m_pBody;
+  const GLfloat m_red;
+  const GLfloat m_blue;
+  const GLfloat m_green;
 
   unsigned int m_index;
 };
